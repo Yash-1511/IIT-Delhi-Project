@@ -1,0 +1,10 @@
+PLC communication setting
+
+Baud Rate
+start bits - 8,7
+parity - odd even none
+stop bits - 1 , 1.5 , 2
+
+ 4800, 9600, 14400, 19200, 38400, 57600, 115200,
+
+   

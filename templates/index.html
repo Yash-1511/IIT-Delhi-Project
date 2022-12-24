@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IIT Delhi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/@tailwindcss/forms@0.2.1/dist/forms.min.css" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css" /> -->
+
+    <style>
+        body {
+            font-family: 'Lexend', sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- IIT Delhi Logo -->
+    <div class="container flex justify-center content-center">
+        <img src="/static/images/iitdelhi.png" alt="" width="100" height="100">
+    </div>
+
+    <!-- Application Name  -->
+    <div>
+        <h1 class="text-center text-2xl">Application Name</h2>
+    </div>
+
+    <!-- Port Settings Form  -->
+    <div>
+        <div class="md:grid md:grid-cols-3 md:gap-6 border-2 border-gray-700 m-6">
+            <div class="mt-5 md:col-span-3 md:mt-0">
+                <form action="#" method="POST">
+                    <div class="shadow sm:overflow-hidden sm:rounded-md">
+                        <div class="space-y-6 bg-white px-4 py-5 sm:p-6">
+                            <div class="grid grid-cols-6 gap-6">
+                                <!-- port  -->
+                                <div class="col-span-3 sm:col-span-3">
+                                    <label for="comport" class="block text-sm font-medium text-gray-700">COM
+                                        Port</label>
+                                    <select id="port" name="port" autocomplete="country-name"
+                                        class="mt-1 block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
+                                        <option>Please Select COM port</option>
+                                        {%for i in range(0, length)%}
+
+                                        <option>{{myports[i]}}</option>
+                                        {%endfor%}
+
+                                    </select>
+                                </div>
+                                <div class="col-span-3 sm:col-span-3">
+                                    {% if length <= 0%}
+                                    <p class="text-red-700 py-6">No comport detected</p>
+                                    {% endif %}
+                                </div>
+                            </div>
+
+                            <!-- baud rate  -->
+                            <div class="grid grid-cols-8 gap-6">
+                                <div class="col-span-2 sm:col-span-2">
+                                    <label for="baudrate" class="block text-sm font-medium text-gray-700">Baud
+                                        Rate</label>
+                                    <select id="baudrate" name="baudrate" autocomplete="country-name" disabled
+                                        class="mt-1 block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm opacity-50">
+                                        <option value="4800">4800</option>
+                                        <option value="9600">9600</option>
+                                        <option value="14400">14400</option>
+                                        <option value="19200">19200</option>
+                                        <option value="38400">38400</option>
+                                        <option value="57600">57600</option>
+                                        <option value="115200">115200</option>
+                                    </select>
+                                </div>
+                                <!-- start bits  -->
+                                <div class="col-span-2 sm:col-span-2">
+                                    <label for="startbits" class="block text-sm font-medium text-gray-700">Start
+                                        Bits</label>
+                                    <select id="startbits" name="startbits" autocomplete="country-name" disabled
+                                        class="mt-1 block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm opacity-50">
+                                        <option value="8">8</option>
+                                        <option value="7">7</option>
+                                    </select>
+                                </div>
+
+                                <!-- parity  -->
+                                <div class="col-span-2 sm:col-span-2">
+                                    <label for="parity" class="block text-sm font-medium text-gray-700">Parity</label>
+                                    <select id="parity" name="parity" autocomplete="country-name" disabled
+                                        class="mt-1 block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm opacity-50">
+                                        <option value="odd">odd</option>
+                                        <option value="even">even</option>
+                                        <option value="none">none</option>
+                                    </select>
+                                </div>
+
+                                <!-- stop bits  -->
+                                <div class="col-span-2 sm:col-span-2">
+                                    <label for="stopbits" class="block text-sm font-medium text-gray-700">Stop
+                                        Bits</label>
+                                    <select id="stopbits" name="stopbits" autocomplete="country-name" disabled
+                                        class="mt-1 block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm opacity-50">
+                                        <option value="1">1</option>
+                                        <option value="1.5">1.5</option>
+                                        <option value="2">2</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="bg-gray-50 px-4 py-3 sm:px-6">
+                            {%if length > 0 %}
+                            
+                            <button type="submit" 
+                                class="inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 mx-2 opacity-50">Connect</button>
+                            <button type="submit" disabled
+                                class="inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 mx-2 opacity-50">Start</button>
+                            <button type="submit" disabled
+                                class="inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 mx-2 opacity-50">Pause</button>
+                            <button type="submit" disabled
+                                class="inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 mx-2 opacity-50">Stop</button>
+                            <button type="submit" disabled
+                                class="inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 mx-2 opacity-50">Disconnect</button>
+
+                        </div>
+                    </div>
+                </form>
+                {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                <ul class=flashes>
+                    {% for message in messages %}
+                    <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+                {% endwith %}
+            </div>
+        </div>
+    </div>
+
+    <div class="shadow-lg rounded-lg overflow-hidden">
+        <div class="py-3 px-5 bg-gray-50">Line chart</div>
+        <canvas class="p-10" id="chartLine"></canvas>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" charset="utf-8"></script>
+    <script>
+        const labels = ["January", "February", "March", "April", "May", "June"];
+        const data = {
+            labels: labels,
+            datasets: [
+                {
+                    label: "My First dataset",
+                    backgroundColor: "hsl(252, 82.9%, 67.8%)",
+                    borderColor: "hsl(252, 82.9%, 67.8%)",
+                    data: [0, 10, 5, 2, 20, 30, 45],
+                },
+            ],
+        };
+
+        const configLineChart = {
+            type: "line",
+            data,
+            options: {},
+        };
+
+        var chartLine = new Chart(
+            document.getElementById("chartLine"),
+            configLineChart
+        );
+    </script>
+</body>
+
+</html>
